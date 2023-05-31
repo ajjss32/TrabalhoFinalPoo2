@@ -6,9 +6,6 @@ public class EventoBuilder {
 
     private Eventos evento;
 
-    //id gera automaticamente
-    //solicitante
-
     public EventoBuilder(){
         this.evento = new Eventos();
     }
@@ -34,6 +31,11 @@ public class EventoBuilder {
     }
      public EventoBuilder setQtdPessoas(int pessoas){
         evento.setQtdpessoas(pessoas);
+        return this;
+     }
+
+     public EventoBuilder setSolicitante(String cpf){
+        evento.setClienteBySolicitanteFk(DAO.procurarCliente(cpf));
         return this;
      }
 

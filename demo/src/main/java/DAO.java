@@ -56,5 +56,21 @@ public class DAO {
         }
     }
 
+    public static Cliente procurarCliente(String cpf){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        try {
+            TypedQuery<Cliente> query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.cpf = :cpf", Cliente.class);
+            query.setParameter("cpf", cpf);
+
+            return query.getSingleResult();
+
+        } finally {
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+    }
+
 
 }
