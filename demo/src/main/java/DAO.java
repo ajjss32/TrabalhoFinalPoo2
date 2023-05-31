@@ -1,11 +1,12 @@
+import entity.Cliente;
+import entity.Eventos;
 import entity.Funcionario;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
+
+import java.util.Random;
 
 public class DAO {
-    public static void main(String[] args) {
+    public static void salvarDados(Object o){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -13,15 +14,16 @@ public class DAO {
         try {
             transaction.begin();
 
-            Funcionario teste = new Funcionario();
-            teste.setEmail("teste@gmail.com");
-            teste.setCpf("12345678910");
-            teste.setEndereco("sla");
-            teste.setNome("sssss");
-            teste.setMatricula("455545");
-            teste.setSenha("socorro");
-
-            entityManager.persist(teste);
+            if(o instanceof Cliente){
+                Cliente cliente = (Cliente) o;
+                entityManager.persist(cliente);
+            } else if(o instanceof Eventos) {
+                Eventos eventos = (Eventos) o;
+                entityManager.persist(eventos);
+            } else if(o instanceof Funcionario) {
+                Funcionario funcionario = (Funcionario) o;
+                entityManager.persist(funcionario);
+            }
 
             transaction.commit();
         } finally {
@@ -32,4 +34,27 @@ public class DAO {
             entityManagerFactory.close();
         }
     }
+
+    public static Funcionario atribuirReponsavel() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        try {
+            Long quantidadeTuplas = entityManager.createQuery("SELECT COUNT(f) FROM Funcionario f", Long.class)
+                    .getSingleResult();
+
+            Random random = new Random();
+            int indiceAleatorio = random.nextInt(quantidadeTuplas.intValue()) + 1;
+
+            TypedQuery<Funcionario> query = entityManager.createQuery("SELECT f FROM Funcionario f WHERE f.id = :indiceAleatorio", Funcionario.class);
+            query.setParameter("indiceAleatorio", indiceAleatorio);
+
+            return query.getSingleResult();
+        } finally {
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+    }
+
+
 }
