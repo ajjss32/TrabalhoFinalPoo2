@@ -7,15 +7,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
 
-        int opcao = 0;
-
-        while(opcao!=3){
+        while(true){
             System.out.println("----- MENU -----");
             System.out.println("1 - Criar Evento\n" +
                                "2 - Acompanhar Evento\n" +
                                "3 - Sair");
 
-            opcao = entrada.nextInt();
+            int opcao = entrada.nextInt();
 
             switch (opcao){
                 case 1:
