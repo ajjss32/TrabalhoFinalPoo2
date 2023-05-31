@@ -25,9 +25,6 @@ public class Funcionario {
     @Basic
     @Column(name = "senha")
     private String senha;
-    @Basic
-    @Column(name = "matricula")
-    private String matricula;
     @OneToMany(mappedBy = "funcionarioByResponsavelFk")
     private Collection<Eventos> eventosById;
 
@@ -79,14 +76,6 @@ public class Funcionario {
         this.senha = senha;
     }
 
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -100,7 +89,6 @@ public class Funcionario {
         if (endereco != null ? !endereco.equals(that.endereco) : that.endereco != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (senha != null ? !senha.equals(that.senha) : that.senha != null) return false;
-        if (matricula != null ? !matricula.equals(that.matricula) : that.matricula != null) return false;
 
         return true;
     }
@@ -113,7 +101,6 @@ public class Funcionario {
         result = 31 * result + (endereco != null ? endereco.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (senha != null ? senha.hashCode() : 0);
-        result = 31 * result + (matricula != null ? matricula.hashCode() : 0);
         return result;
     }
 

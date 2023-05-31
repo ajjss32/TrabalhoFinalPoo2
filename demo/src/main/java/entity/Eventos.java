@@ -32,7 +32,7 @@ public class Eventos {
     @JoinColumn(name = "responsavel_fk", referencedColumnName = "id")
     private Funcionario funcionarioByResponsavelFk;
     @ManyToOne
-    @JoinColumn(name = "solicitante_fk", referencedColumnName = "id")
+    @JoinColumn(name = "solicitante_fk", referencedColumnName = "cpf")
     private Cliente clienteBySolicitanteFk;
 
     public int getId() {
