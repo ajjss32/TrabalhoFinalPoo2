@@ -1,8 +1,11 @@
+package RecuperacaoDados;
+
 import entity.Cliente;
 import entity.Eventos;
 import entity.Funcionario;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Random;
 
 public class DAO {
@@ -71,6 +74,38 @@ public class DAO {
             entityManagerFactory.close();
         }
     }
+
+    public static Eventos procurarEvento(int id){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        try {
+            TypedQuery<Eventos> query = entityManager.createQuery("SELECT e FROM Eventos e WHERE e.id= :id", Eventos.class);
+            query.setParameter("id", id);
+
+            return query.getSingleResult();
+
+        } finally {
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+    }
+    public static List<Cliente> listaClientes(){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        try {
+            TypedQuery<Cliente> query = entityManager.createQuery("SELECT c FROM Cliente c ", Cliente.class);
+
+            return query.getResultList();
+
+        } finally {
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+    }
+
+
 
 
 }

@@ -1,3 +1,5 @@
+import ObserverPD.EventManeger;
+import RecuperacaoDados.DAO;
 import entity.Eventos;
 
 import java.sql.Date;
@@ -5,6 +7,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        /*EventManeger eventManeger = new EventManeger();
+        eventManeger.registrarObserver();
+        eventManeger.atualizarStatusEvento(3,"Confirmadoo");*/
         Scanner entrada = new Scanner(System.in);
 
         while(true){

@@ -1,11 +1,12 @@
 package entity;
 
+import ObserverPD.Observer;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
-public class Cliente {
+public class Cliente implements Observer {
     @Id
     @Column(name = "cpf")
     private String cpf;
@@ -75,5 +76,10 @@ public class Cliente {
     @Override
     public int hashCode() {
         return Objects.hash(cpf, nome, endereco, email, senha);
+    }
+
+    @Override
+    public void update(Eventos evento) {
+        System.out.println(nome+" :Atualização do evento do tipo "+evento.getTipo()+" -Novo Status: "+evento.getStatus());
     }
 }

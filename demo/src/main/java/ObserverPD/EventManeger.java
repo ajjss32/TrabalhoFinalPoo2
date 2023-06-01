@@ -1,48 +1,61 @@
 package ObserverPD;
 
+import RecuperacaoDados.DAO;
+import entity.Cliente;
 import entity.Eventos;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EventManeger implements Observable{
-    //lista ou um cliente
     private List<Observer> observers;
-    private List<Eventos> eventos;
-
     public EventManeger() {
         observers = new ArrayList<>();
-        eventos = new ArrayList<>();
     }
-
     @Override
-    public void registrarObserver(Observer observer) {
-        observers.add(observer);
+    public void registrarObserver() {
+        observers.addAll(DAO.listaClientes());
     }
 
     @Override
     public void removerObserver(Observer observer) {
+        //QUANDO MEU STATUS DO EVENTO FOR "FINALIZADO"
         observers.remove(observer);
     }
 
     @Override
-    public void notifyObservers(Eventos eventos) {
-        for (Observer observer:observers) {
-            observer.update(eventos);
-        }
-    }
-    public void addEvento(Eventos evento){
-        //notificar o funcionario
-        eventos.add(evento);
-        notifyObservers(evento);
-    }
-    public void atualizarStatusEvento(int id,String status){
-        for (Eventos evento: eventos){
-            if (evento.getId() == id){
-                evento.setStatus(status);
-                notifyObservers(evento);
+    public void notifyObservers(Eventos evento) {
+        for (Observer observer: observers){
+            Cliente cliente = (Cliente) observer;
+            if ((evento.getClienteBySolicitanteFk().getCpf()).equals(cliente.getCpf())){
+                observer.update(evento);
                 break;
             }
+        }
+    }
+
+    public void atualizarStatusEvento(int id,String status){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            Eventos evento =entityManager.find(Eventos.class,id);
+            evento.setStatus(status);
+            Eventos eventoAtualizado = entityManager.merge(evento);
+            transaction.commit();
+            notifyObservers(evento);
+
+        } finally {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            entityManager.close();
+            entityManagerFactory.close();
         }
     }
 }

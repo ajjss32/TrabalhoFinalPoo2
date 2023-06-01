@@ -26,6 +26,7 @@
       <property name="eclipselink.jdbc.user" value="dxwdghkc"/>
       <property name="eclipselink.jdbc.password" value="x-xjmI4pyfHzWoRj8zrYFoIlZnQfiX5B"/>
       <property name="hibernate.show_sql" value="true"/>
+
     </properties>
 
   </persistence-unit>
