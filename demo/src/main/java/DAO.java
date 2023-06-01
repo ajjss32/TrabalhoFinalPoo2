@@ -17,7 +17,7 @@ public class DAO {
             teste.setEmail("teste@gmail.com");
             teste.setCpf("12345678910");
             teste.setEndereco("sla");
-            teste.setNome("sssss");
+            teste.setNome("Ana Julia");
             teste.setMatricula("455545");
             teste.setSenha("socorro");
 

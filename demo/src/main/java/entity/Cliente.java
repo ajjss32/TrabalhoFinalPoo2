@@ -2,8 +2,10 @@ package entity;
 
 import jakarta.persistence.*;
 
+import ObserverPD.*;
+
 @Entity
-public class Cliente {
+public class Cliente implements Observer{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -98,5 +100,11 @@ public class Cliente {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (senha != null ? senha.hashCode() : 0);
         return result;
+    }
+
+
+    @Override
+    public void update(Eventos evento) {
+        System.out.println(nome+" Atualização do evento "+evento.getTipo()+ " -Novo Status: "+evento.getStatus());
     }
 }
