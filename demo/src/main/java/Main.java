@@ -1,3 +1,4 @@
+import Builder.EventoBuilder;
 import ObserverPD.EventManeger;
 import RecuperacaoDados.DAO;
 import entity.Eventos;
@@ -9,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         /*EventManeger eventManeger = new EventManeger();
         eventManeger.registrarObserver();
-        eventManeger.atualizarStatusEvento(3,"Confirmadoo");*/
+        eventManeger.atualizarStatusEvento(3,"Confirmado");*/
         Scanner entrada = new Scanner(System.in);
 
         while(true){
@@ -25,7 +26,10 @@ public class Main {
                     criarEvento();
                     break;
                 case 2:
-                    //acompanharEvento();
+                    EventManeger eventManeger = new EventManeger();
+                    eventManeger.registrarObserver();
+                    eventManeger.notifyObservers(DAO.procurarEvento(5));
+                    eventManeger.atualizarStatusEvento(5, "Confirmado");
                     break;
                 case 3:
                     System.exit(0);
