@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CadastroController">
+   <right>
+      <AnchorPane prefHeight="500.0" prefWidth="230.0" style="-fx-background-color: #836FFF;" BorderPane.alignment="CENTER" />
+   </right>
+   <left>
+      <AnchorPane prefHeight="500.0" prefWidth="402.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="112.0" layoutY="21.0" text="Cadastrar">
+               <font>
+                  <Font name="Ubuntu Mono" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="27.0" layoutY="77.0" prefHeight="16.0" prefWidth="83.0" text="Nome">
+               <font>
+                  <Font name="Ubuntu Light" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nomeTextField" layoutX="27.0" layoutY="105.0" prefHeight="32.0" prefWidth="326.0" />
+            <Label layoutX="27.0" layoutY="148.0" prefHeight="16.0" prefWidth="83.0" text="CPF">
+               <font>
+                  <Font name="Ubuntu Light" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cpfTextField" layoutX="27.0" layoutY="176.0" prefHeight="32.0" prefWidth="326.0" />
+            <Label layoutX="27.0" layoutY="218.0" prefHeight="16.0" prefWidth="83.0" text="Endereço">
+               <font>
+                  <Font name="Ubuntu Light" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="enderecoTextField" layoutX="27.0" layoutY="246.0" prefHeight="32.0" prefWidth="326.0" />
+            <Label layoutX="27.0" layoutY="291.0" prefHeight="16.0" prefWidth="83.0" text="Email">
+               <font>
+                  <Font name="Ubuntu Light" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="emailTextField" layoutX="27.0" layoutY="319.0" prefHeight="32.0" prefWidth="326.0" />
+            <Label layoutX="30.0" layoutY="363.0" prefHeight="16.0" prefWidth="83.0" text="Senha">
+               <font>
+                  <Font name="Ubuntu Light" size="16.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="senhaPassField" layoutX="30.0" layoutY="393.0" prefHeight="32.0" prefWidth="326.0" />
+            <Button fx:id="cadastroButton" layoutX="81.0" layoutY="448.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="38.0" prefWidth="218.0" style="-fx-background-color: #6959CD;" text="Cadastrar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Label fx:id="cadastroMessageLabel" alignment="CENTER" layoutX="165.0" layoutY="58.0" />
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="dxwdghkc@silly.db.elephantsql.com" uuid="8429124e-e024-48fa-be1d-d7fb91978381">
+    <data-source source="LOCAL" name="dxwdghkc@silly.db.elephantsql.com" uuid="895de436-6b23-4d1b-9e81-e2ca9e333cb7">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://silly.db.elephantsql.com:5432/dxwdghkc</jdbc-url>
+      <jdbc-url>jdbc:postgresql://silly.db.elephantsql.com/dxwdghkc</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

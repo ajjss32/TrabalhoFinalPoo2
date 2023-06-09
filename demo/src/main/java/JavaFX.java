@@ -10,7 +10,7 @@ public class JavaFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Pane root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+        Pane root = FXMLLoader.load(getClass().getResource("acompanharEvento.fxml"));
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

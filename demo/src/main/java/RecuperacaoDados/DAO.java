@@ -104,7 +104,35 @@ public class DAO {
             entityManagerFactory.close();
         }
     }
+    public static Cliente login(String email,String senha){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
+        try {
+            TypedQuery<Cliente> query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.email= :email AND c.senha = :senha", Cliente.class);
+            query.setParameter("email", email);
+            query.setParameter("senha", senha);
+            return query.getSingleResult();
+
+        } finally {
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+    }
+    public static List<Eventos> listaEventos(){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        try {
+            TypedQuery<Eventos> query = entityManager.createQuery("SELECT e FROM Eventos e ", Eventos.class);
+
+            return query.getResultList();
+
+        } finally {
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+    }
 
 
 
