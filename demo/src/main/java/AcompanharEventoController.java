@@ -8,10 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import javax.xml.crypto.Data;
@@ -50,7 +51,14 @@ public class AcompanharEventoController implements Initializable {
     @FXML
     private TableColumn<Eventos, String> statusEvento;
     ObservableList<Eventos> eventos = FXCollections.observableArrayList(DAO.listaEventos());
-    EditarEventoController editarEventoController = new EditarEventoController();
+
+    public void setStatusEvento(String estilo) {
+        statusEvento.setStyle(estilo);
+    }
+
+    public TableView<Eventos> getTableView() {
+        return tableView;
+    }
 
     public void adicionarEventoChamado() {
         nomeEvento.setCellValueFactory(new PropertyValueFactory<>("tipo"));
@@ -62,10 +70,11 @@ public class AcompanharEventoController implements Initializable {
         idEvento.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomeClienteEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteBySolicitanteFk().getNome()));
         nomeResponsavelEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFuncionarioByResponsavelFk().getNome()));
-
         tableView.setItems(eventos);
     }
+    public void atualizarTabela(){
 
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         adicionarEventoChamado();
@@ -74,23 +83,21 @@ public class AcompanharEventoController implements Initializable {
                 Eventos eventoSelecionado = tableView.getSelectionModel().getSelectedItem();
 
                 if (eventoSelecionado != null) {
-                    int id = eventoSelecionado.getId();
-                    String nomeEvento = eventoSelecionado.getTipo();
-                    String endereco = eventoSelecionado.getEndereco();
-                    String descricao = eventoSelecionado.getDescricao();
-                    String status = eventoSelecionado.getStatus();
-                    String nomeCliente = eventoSelecionado.getClienteBySolicitanteFk().getNome();
-                    String nomeFuncionario = eventoSelecionado.getFuncionarioByResponsavelFk().getNome();
 
-                    Parent root;
-                    try {
-                        root = FXMLLoader.load(getClass().getResource("editarStatus.fxml"));
+                        try {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("editarStatus.fxml"));
+                            Parent root = loader.load();
 
-                        Stage stage = new Stage();
-                        Scene scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();
-                        editarEventoController.mostraInformacoes(nomeEvento,endereco,5,descricao,nomeCliente,nomeFuncionario);
+                            EditarEventoController editarEventoController = loader.getController();
+                            editarEventoController.setTabelaEventos(tableView);
+                            editarEventoController.setEventos(eventoSelecionado);
+                            editarEventoController.mostraInformacoes();
+
+                            tableView.refresh();
+                            Stage stage = new Stage();
+                            Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.show();
                     } catch (IOException error) {
                         error.printStackTrace();
                     }
@@ -101,4 +108,6 @@ public class AcompanharEventoController implements Initializable {
         });
 
     }
+
+
 }

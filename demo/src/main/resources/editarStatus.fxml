@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditarEventoController">
    <top>
       <Label alignment="CENTER" text="Editar Status" BorderPane.alignment="CENTER">
@@ -68,7 +67,7 @@
             </Label>
             <TextField fx:id="StatusEvent" layoutX="29.0" layoutY="394.0" prefHeight="39.0" prefWidth="248.0" />
             <Button layoutX="443.0" layoutY="466.0" mnemonicParsing="false" text="Cancelar" />
-            <Button layoutX="356.0" layoutY="466.0" mnemonicParsing="false" text="Atualizar" />
+            <Button fx:id="atualizarBotao" layoutX="356.0" layoutY="466.0" mnemonicParsing="false" onAction="#atualizarStatus" text="Atualizar" />
          </children>
       </AnchorPane>
    </left>
