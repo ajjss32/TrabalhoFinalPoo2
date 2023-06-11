@@ -45,6 +45,19 @@ public class LoginController implements Initializable {
     public void validateLogin(){
         Cliente cliente = DAO.login(emailTextField.getText(), SenhaField.getText());
         loginMessageLabel.setText("Oi "+cliente.getNome());
+
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            Stage currentStage = (Stage) loginMessageLabel.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException error) {
+            error.printStackTrace();
+        }
     }
 
     public void cadastrar(){
