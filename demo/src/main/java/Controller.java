@@ -39,7 +39,7 @@ public class Controller implements Initializable {
     private TextArea descricaoArea;
 
     @FXML
-    private Button concluirButton;
+    private Button sair;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -110,6 +110,17 @@ public class Controller implements Initializable {
 
     @FXML
     public void sair(ActionEvent event) {
-        System.exit(0);
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("login.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            Stage currentStage = (Stage) sair.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException error) {
+            error.printStackTrace();
+        }
     }
 }
