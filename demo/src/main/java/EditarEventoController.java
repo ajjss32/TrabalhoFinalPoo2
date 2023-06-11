@@ -44,7 +44,7 @@ public class EditarEventoController implements Initializable {
 
     public void mostraInformacoes(){
         this.tipoEvento.setText(eventos.getTipo());
-        dataEvent.setText("2002/12/12");
+        dataEvent.setText(eventos.getData().toString());
         endEvent.setText(eventos.getEndereco());
         Nconvidado.setText(Integer.toString(eventos.getQtdpessoas()));
         DescEvent.setText(eventos.getEndereco());
