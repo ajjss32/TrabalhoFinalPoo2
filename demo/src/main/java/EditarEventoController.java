@@ -62,6 +62,11 @@ public class EditarEventoController implements Initializable {
             Stage stage = (Stage) StatusEvent.getScene().getWindow();
             stage.close();
 
+            Controller controller = new Controller();
+            controller.acompanharEvento(e);
+
+            Stage currentStage = (Stage) tabelaEventos.getScene().getWindow();
+            currentStage.close();
         }
 
 
