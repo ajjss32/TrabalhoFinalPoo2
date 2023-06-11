@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -34,7 +35,19 @@ public class CadastroController implements Initializable {
         if (!(emailTextField.getText().isBlank() && senhaPassField.getText().isBlank() && cpfTextField.getText().isBlank() && nomeTextField.getText().isBlank() && enderecoTextField.getText().isBlank())){
                 Cliente cliente = new Cliente(cpfTextField.getText(),nomeTextField.getText(),enderecoTextField.getText(),emailTextField.getText(),senhaPassField.getText());
                 DAO.salvarDados(cliente);
-            System.out.println("Cliente cadastrado");
+
+            emailTextField.clear();
+            senhaPassField.clear();
+            cpfTextField.clear();
+            nomeTextField.clear();
+            enderecoTextField.clear();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Cadastro Cliente");
+            alert.setHeaderText(null);
+            alert.setContentText("Cliente Cadastrado Com Sucesso!");
+            alert.showAndWait();
+
             Parent root;
             try {
                 root = FXMLLoader.load(getClass().getResource("menu.fxml"));
