@@ -21,6 +21,10 @@ public class EventManeger implements Observable{
         observers.addAll(DAO.listaClientes());
     }
 
+    public List<Observer> getObservers() {
+        return observers;
+    }
+
     @Override
     public void removerObserver(Observer observer) {
         //QUANDO MEU STATUS DO EVENTO FOR "FINALIZADO"
