@@ -1,7 +1,4 @@
-import ObserverPD.EventManeger;
-import ObserverPD.Observer;
 import RecuperacaoDados.DAO;
-import entity.Cliente;
 import entity.Eventos;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -82,14 +79,13 @@ public class AcompanharEventoClienteController implements Initializable {
                 if (eventoSelecionado != null) {
 
                     try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("editarStatus.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("verSolicitacao.fxml"));
                         Parent root = loader.load();
 
-                        EditarEventoController editarEventoController = loader.getController();
-                        editarEventoController.setTabelaEventos(tableView);
-                        editarEventoController.setEventos(eventoSelecionado);
-                        editarEventoController.mostraInformacoes();
-
+                        VerSolicitacaoController verSolicitacaoController = loader.getController();
+                        verSolicitacaoController.setTabelaEventos(tableView);
+                        verSolicitacaoController.setEventos(eventoSelecionado);
+                        verSolicitacaoController.mostraInformacoes();
                         tableView.refresh();
                         Stage stage = new Stage();
                         Scene scene = new Scene(root);
