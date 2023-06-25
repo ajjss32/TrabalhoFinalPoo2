@@ -27,7 +27,8 @@ public class EditarEventoController implements Initializable {
     @FXML
     private Label responsavelEvent;
     @FXML
-    private TextField StatusEvent;
+    private ChoiceBox<String> StatusEvent;
+    private String[] opcoesStatus = {"Pendente","Finalizado","Em andamento"};
     @FXML
     private Button atualizarBotao;
     private Eventos eventos;
@@ -53,10 +54,9 @@ public class EditarEventoController implements Initializable {
     }
 
     public void atualizarStatus(ActionEvent e){
-        if (!StatusEvent.getText().isBlank()){
-        }
+
             EventManeger eventManeger = new EventManeger();
-            eventManeger.atualizarStatusEvento(eventos.getId(),StatusEvent.getText());
+            eventManeger.atualizarStatusEvento(eventos.getId(),StatusEvent.getValue());
             tabelaEventos.refresh();
 
             Stage stage = (Stage) StatusEvent.getScene().getWindow();
@@ -72,6 +72,7 @@ public class EditarEventoController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //mostraInformacoes();
+
+        StatusEvent.getItems().addAll(opcoesStatus);
     }
 }

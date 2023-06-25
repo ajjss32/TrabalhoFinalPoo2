@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -26,16 +27,8 @@ public class AcompanharEventoClienteController implements Initializable {
     private TableView<Eventos> tableView;
 
     @FXML
-    private TableColumn<Eventos, Integer> convidadosEvento;
-
-    @FXML
     private TableColumn<Eventos, String> dataEvento;
 
-    @FXML
-    private TableColumn<Eventos, String>descricacaoEvento;
-
-    @FXML
-    private TableColumn<Eventos, String> enderecoEvento;
 
     @FXML
     private TableColumn<Eventos, String> nomeEvento;
@@ -98,11 +91,8 @@ public class AcompanharEventoClienteController implements Initializable {
     public void adicionarEventoChamado() {
         associaClientesEvento();
         nomeEvento.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        descricacaoEvento.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-        convidadosEvento.setCellValueFactory(new PropertyValueFactory<>("qtdpessoas"));
         statusEvento.setCellValueFactory(new PropertyValueFactory<>("status"));
         dataEvento.setCellValueFactory(new PropertyValueFactory<>("data"));
-        enderecoEvento.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         nomeResponsavelEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFuncionarioByResponsavelFk().getNome()));
         tableView.setItems(eventos);
 
@@ -137,7 +127,6 @@ public class AcompanharEventoClienteController implements Initializable {
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("verSolicitacao.fxml"));
                         Parent root = loader.load();
-
                         VerSolicitacaoController verSolicitacaoController = loader.getController();
                         verSolicitacaoController.setTabelaEventos(tableView);
                         verSolicitacaoController.setEventos(eventoSelecionado);
@@ -149,6 +138,30 @@ public class AcompanharEventoClienteController implements Initializable {
                         stage.show();
                     } catch (IOException error) {
                         error.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        statusEvento.setCellFactory(column -> new TableCell<Eventos, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    String status = getTableView().getItems().get(getIndex()).getStatus();
+
+                    if ("Pendente".equals(status)) {
+                        setStyle("-fx-background-color: #FF967A;");
+                    } else if ("Finalizado".equals(status)) {
+                        setStyle("-fx-background-color: #C8FFCD;");
+                    } else if ("Em andamento".equals(status)) {
+                        setStyle("-fx-background-color: #FEDF97;");
+                    } else {
+                        setStyle("");
                     }
                 }
             }

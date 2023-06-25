@@ -26,18 +26,6 @@ public class AcompanharEventoController implements Initializable {
     private TableView<Eventos> tableView;
 
     @FXML
-    private TableColumn<Eventos, Integer> convidadosEvento;
-
-    @FXML
-    private TableColumn<Eventos, String> dataEvento;
-
-    @FXML
-    private TableColumn<Eventos, String>descricacaoEvento;
-
-    @FXML
-    private TableColumn<Eventos, String> enderecoEvento;
-
-    @FXML
     private TableColumn<Eventos, Integer>idEvento;
 
     @FXML
@@ -62,15 +50,24 @@ public class AcompanharEventoController implements Initializable {
 
     public void adicionarEventoChamado() {
         nomeEvento.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        descricacaoEvento.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-        convidadosEvento.setCellValueFactory(new PropertyValueFactory<>("qtdpessoas"));
         statusEvento.setCellValueFactory(new PropertyValueFactory<>("status"));
-        dataEvento.setCellValueFactory(new PropertyValueFactory<>("data"));
-        enderecoEvento.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         idEvento.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomeClienteEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteBySolicitanteFk().getNome()));
         nomeResponsavelEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFuncionarioByResponsavelFk().getNome()));
         tableView.setItems(eventos);
+
+        tableView.setRowFactory(tv -> new TableRow<Eventos>() {
+            @Override
+            protected void updateItem(Eventos item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item != null && !empty) {
+                    getStyleClass().setAll("table-cell-filled");
+
+                } else {
+                    getStyleClass().setAll("cellDefault ");
+                }
+            }
+        });
     }
     public void atualizarTabela(){
 
@@ -103,6 +100,29 @@ public class AcompanharEventoController implements Initializable {
                     }
 
 
+                }
+            }
+        });
+        statusEvento.setCellFactory(column -> new TableCell<Eventos, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    String status = getTableView().getItems().get(getIndex()).getStatus();
+
+                    if ("Pendente".equals(status)) {
+                        setStyle("-fx-background-color: #FF967A;");
+                    } else if ("Finalizado".equals(status)) {
+                        setStyle("-fx-background-color: #C8FFCD;");
+                    } else if ("Em andamento".equals(status)) {
+                        setStyle("-fx-background-color: #FEDF97;");
+                    } else {
+                        setStyle("");
+                    }
                 }
             }
         });
