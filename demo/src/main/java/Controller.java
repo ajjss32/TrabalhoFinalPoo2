@@ -40,6 +40,7 @@ public class Controller implements Initializable {
 
     @FXML
     private Button concluirButton;
+    private String cpfCliente;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -64,6 +65,7 @@ public class Controller implements Initializable {
     @FXML
     public void concluir(ActionEvent event){
         String cpf = cpfField.getText();
+        cpfCliente= cpfField.getText();
         String tipo = tipoField.getText();
         String data = dataField.getText();
         String endereco = enderecoField.getText();
@@ -99,7 +101,11 @@ public class Controller implements Initializable {
     public void acompanharEvento(ActionEvent event) {
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("acompanharEventoCliente.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("acompanharEventoCliente.fxml"));
+            root = loader.load();
+            AcompanharEventoClienteController acompanharEventoController = loader.getController();
+            acompanharEventoController.setCpfCliente(cpfCliente);
+            acompanharEventoController.adicionarEventoChamado();
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);
