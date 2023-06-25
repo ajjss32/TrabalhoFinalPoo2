@@ -1,21 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AcompanharEventoClienteController">
-    <center>
-        <TableView fx:id="tableView" prefHeight="700.0" prefWidth="1004.0" style="-fx-background-color: #DCDCDC;" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="1076.0" xmlns="http://javafx.com/javafx/20.0.1" stylesheets="TableView.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AcompanharEventoClienteController">
+    <right>
+        <TableView fx:id="tableView" prefHeight="744.0" prefWidth="1076.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn fx:id="nomeEvento" prefWidth="85.0" text="Nome" />
-                <TableColumn fx:id="dataEvento" prefWidth="74.0" text="Data" />
-                <TableColumn fx:id="enderecoEvento" prefWidth="100.0" text="Endereço" />
-                <TableColumn fx:id="descricacaoEvento" prefWidth="105.0" text="Descriçao" />
-                <TableColumn fx:id="convidadosEvento" prefWidth="97.0" text="Convidados" />
-                <TableColumn fx:id="nomeResponsavelEvento" prefWidth="109.0" text="Responsavel" />
-                <TableColumn fx:id="statusEvento" prefWidth="95.0" text="Status" />
+                <TableColumn fx:id="nomeEvento" prefWidth="120.0" text="Nome" />
+                <TableColumn fx:id="dataEvento" prefWidth="120.0" text="Data" />
+                <TableColumn fx:id="enderecoEvento" prefWidth="120.0" text="Endereço" />
+                <TableColumn fx:id="descricacaoEvento" prefWidth="120.0" text="Descriçao" />
+                <TableColumn fx:id="convidadosEvento" prefWidth="120.0" text="Convidados" />
+                <TableColumn fx:id="nomeResponsavelEvento" prefWidth="120.0" text="Responsavel" />
+                <TableColumn fx:id="statusEvento" prefWidth="120.0" text="Status" />
             </columns>
         </TableView>
-    </center>
+   </right>
+   <left>
+      <AnchorPane prefHeight="744.0" prefWidth="236.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="744.0" prefWidth="236.0" style="-fx-background-color: #111747;">
+               <children>
+                  <ImageView fitHeight="774.0" fitWidth="38.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Rangitikei%204.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="188.0" layoutX="40.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Group%206.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="40.0" layoutY="76.0" mnemonicParsing="false" onAction="#acompanharEvento" style="-fx-background-color: #111747;" text="Acompanhar Evento" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Line endX="61.0" layoutX="153.0" layoutY="109.0" startX="-100.0" stroke="#fe5e33" />
+                  <Button layoutX="40.0" layoutY="120.0" mnemonicParsing="false" onAction="#criarEvento" style="-fx-background-color: #111747;" text="Criar Evento" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Line endX="61.0" layoutX="153.0" layoutY="153.0" startX="-100.0" stroke="#fe5e33" />
+                  <Line endX="61.0" layoutX="163.0" layoutY="730.0" startX="-100.0" stroke="#fe5e33" />
+                  <Button layoutX="104.0" layoutY="687.0" mnemonicParsing="false" onAction="#sair" style="-fx-background-color: #111747;" text="Sair" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+   </left>
 </BorderPane>
