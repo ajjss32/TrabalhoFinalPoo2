@@ -1,30 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
-   <children>
-      <TextField fx:id="cpfField" layoutX="103.0" layoutY="37.0" prefHeight="26.0" prefWidth="435.0" />
-      <TextField fx:id="tipoField" layoutX="161.0" layoutY="71.0" prefHeight="26.0" prefWidth="379.0" />
-      <TextField fx:id="dataField" layoutX="243.0" layoutY="105.0" prefHeight="26.0" prefWidth="297.0" />
-      <TextField fx:id="enderecoField" layoutX="161.0" layoutY="136.0" prefHeight="26.0" prefWidth="379.0" />
-      <TextField fx:id="qtdPessoasField" layoutX="200.0" layoutY="300.0" prefHeight="26.0" prefWidth="340.0" />
-      <TextArea fx:id="descricaoArea" layoutX="128.0" layoutY="171.0" prefHeight="117.0" prefWidth="414.0" />
-      <Text layoutX="58.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF:" />
-      <Text layoutX="58.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de Evento:" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="58.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data do evento (aaaa-mm-dd):" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="60.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Local do evento:" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="60.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="58.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de pessoas:" />
-      <Button fx:id="concluirButton" layoutX="263.0" layoutY="345.0" mnemonicParsing="false" text="CONCLUIR" onAction="#concluir" />
-   </children>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="1076.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <left>
+      <AnchorPane prefHeight="744.0" prefWidth="236.0" style="-fx-background-color: #111747;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="774.0" fitWidth="38.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Rangitikei%204.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="46.0" fitWidth="188.0" layoutX="40.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Group%206.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="40.0" layoutY="76.0" mnemonicParsing="false" onAction="#acompanharEvento" style="-fx-background-color: #111747;" text="Acompanhar Evento" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Line endX="61.0" layoutX="153.0" layoutY="109.0" startX="-100.0" stroke="#fe5e33" />
+            <Button layoutX="40.0" layoutY="120.0" mnemonicParsing="false" onAction="#criarEvento" style="-fx-background-color: #111747;" text="Criar Evento" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Line endX="61.0" layoutX="153.0" layoutY="153.0" startX="-100.0" stroke="#fe5e33" />
+            <Line endX="61.0" layoutX="163.0" layoutY="730.0" startX="-100.0" stroke="#fe5e33" />
+            <Button layoutX="104.0" layoutY="687.0" mnemonicParsing="false" onAction="#sair" style="-fx-background-color: #111747;" text="Sair" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="744.0" prefWidth="840.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="250.0" layoutY="14.0" text="Criar evento" textFill="#111747">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="107.0" text="CPF" textFill="#111745c7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="39.0" layoutY="134.0" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: #F8F8F8; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
+            <Label layoutX="438.0" layoutY="107.0" text="Tipo do evento" textFill="#111745c7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="432.0" layoutY="134.0" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: #F8F8F8; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
+            <Label layoutX="45.0" layoutY="202.0" text="Data do evento" textFill="#111745c7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="dataField" layoutX="39.0" layoutY="229.0" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: #F8F8F8; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
+            <Label layoutX="438.0" layoutY="202.0" text="Numero de convidados" textFill="#111745c7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="qtdPessoasField" layoutX="432.0" layoutY="229.0" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: #F8F8F8; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
+            <Label layoutX="45.0" layoutY="302.0" text="Local do evento" textFill="#111745c7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="enderecoField" layoutX="39.0" layoutY="329.0" prefHeight="50.0" prefWidth="732.0" style="-fx-background-color: #F8F8F8; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
+            <Label layoutX="45.0" layoutY="400.0" text="Descriçao" textFill="#111745c7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="descricaoArea" layoutX="41.0" layoutY="428.0" prefHeight="117.0" prefWidth="732.0" style="-fx-background-color: #F8F8F8; -fx-border-color: #d9d9d9; -fx-border-radius: 15px;" />
+            <Button fx:id="concluirButton" layoutX="243.0" layoutY="591.0" mnemonicParsing="false" onAction="#concluir" prefHeight="50.0" prefWidth="325.0" style="-fx-background-color: #06818E;" text="Concluir" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

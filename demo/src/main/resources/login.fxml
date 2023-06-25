@@ -4,47 +4,58 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
-   <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #836FFF;" BorderPane.alignment="CENTER" />
-   </left>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="1076.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFF3F0;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="30.0" prefHeight="16.0" prefWidth="132.0" text="Login">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="77.0" prefHeight="59.0" prefWidth="443.0" text="Bem vindo de volta" textFill="#111747">
                <font>
-                  <Font name="Ubuntu Light" size="36.0" />
+                  <Font name="Ubuntu Light" size="50.0" />
                </font>
             </Label>
-            <Label layoutX="27.0" layoutY="101.0" prefHeight="16.0" prefWidth="107.0" text="Email" textFill="#4d4c4c">
+            <Label layoutX="48.0" layoutY="218.0" prefHeight="16.0" prefWidth="107.0" text="Email" textFill="#111745bf">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="27.0" layoutY="176.0" prefHeight="16.0" prefWidth="107.0" text="Senha">
+            <Label layoutX="48.0" layoutY="312.0" prefHeight="16.0" prefWidth="107.0" text="Senha" textFill="#111745bf">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="emailTextField" layoutX="27.0" layoutY="129.0" prefHeight="39.0" prefWidth="264.0" promptText="Email" />
-            <PasswordField fx:id="SenhaField" layoutX="27.0" layoutY="205.0" prefHeight="39.0" prefWidth="264.0" promptText="Senha" />
-            <Button fx:id="LoginButton" layoutX="53.0" layoutY="295.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="38.0" prefWidth="218.0" style="-fx-background-color: #6959CD;" text="Entrar" textFill="WHITE">
+            <TextField fx:id="emailTextField" layoutX="45.0" layoutY="245.0" prefHeight="50.0" prefWidth="462.0" style="-fx-background-color: #ffffff; -fx-border-color: #d6d6d6; -fx-border-radius: 15px;" />
+            <PasswordField fx:id="SenhaField" layoutX="45.0" layoutY="347.0" prefHeight="50.0" prefWidth="462.0" style="-fx-background-color: #ffffff; -fx-border-color: #d6d6d6; -fx-border-radius: 15px;" />
+            <Button fx:id="LoginButton" layoutX="117.0" layoutY="450.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="50.0" prefWidth="325.0" style="-fx-background-color: #06818E;" text="Entrar" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="CadastroButton" layoutX="52.0" layoutY="340.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="38.0" prefWidth="218.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #6A5ACD;" text="Cadastrar-se" textFill="#000000e7" />
-            <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="16.0" layoutY="253.0" prefHeight="30.0" prefWidth="288.0" textFill="RED">
+            <Button fx:id="CadastroButton" layoutX="117.0" layoutY="510.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="50.0" prefWidth="325.0" style="-fx-border-color: #FE5E33; -fx-background-color: #FFF3F0;" text="Criar conta" textFill="#000000e7" />
+            <ImageView fitHeight="45.0" fitWidth="161.0" layoutX="188.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Group%202.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="141.0" layoutY="147.0" text="Faça login e acompanhe seus eventos!" textFill="#11174580" />
+            <Label fx:id="loginMessageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="246.0" layoutY="602.0" textAlignment="CENTER" textFill="#fe5e33">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
    </center>
+   <left>
+      <ImageView fitHeight="744.0" fitWidth="522.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@Rangitikei%201.png" />
+         </image>
+      </ImageView>
+   </left>
 </BorderPane>

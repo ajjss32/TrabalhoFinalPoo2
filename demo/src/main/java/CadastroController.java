@@ -50,7 +50,7 @@ public class CadastroController implements Initializable {
 
             Parent root;
             try {
-                root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+                root = FXMLLoader.load(getClass().getResource("criarEvento.fxml"));
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);

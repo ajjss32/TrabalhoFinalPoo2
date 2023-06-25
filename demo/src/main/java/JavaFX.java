@@ -10,7 +10,7 @@ public class JavaFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Pane root = FXMLLoader.load(getClass().getResource("acompanharEventoCliente.fxml"));
+        Pane root = FXMLLoader.load(getClass().getResource("cadastro.fxml"));
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
