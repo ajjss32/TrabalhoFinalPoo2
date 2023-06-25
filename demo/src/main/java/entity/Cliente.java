@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class Cliente implements Observer {
+public class Cliente extends Pessoa implements Observer {
     @Id
     @Column(name = "cpf")
     private String cpf;

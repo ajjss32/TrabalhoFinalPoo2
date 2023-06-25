@@ -1,5 +1,7 @@
 import RecuperacaoDados.DAO;
-import entity.Cliente;
+import Proxy.TelaEscolhida;
+import Proxy.TelaInicial;
+import entity.Pessoa;
 import jakarta.persistence.NoResultException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +28,12 @@ public class LoginController implements Initializable {
     private TextField emailTextField;
     @FXML
     private PasswordField SenhaField;
+    private TelaInicial telaEscolhida;
+
+    public LoginController() {
+        telaEscolhida = new TelaEscolhida();
+    }
+
     @FXML
     public void loginButton(ActionEvent e) {
         try {
@@ -37,18 +45,19 @@ public class LoginController implements Initializable {
                 loginMessageLabel.setText("Por favor,preencha todos os campos!");
             }
         }catch (NoResultException erro){
-            loginMessageLabel.setText("Cliente não cadastrado! ");
+            loginMessageLabel.setText("Credenciais inválidas!");
         }
 
     }
 
     public void validateLogin(){
-        Cliente cliente = DAO.login(emailTextField.getText(), SenhaField.getText());
-        loginMessageLabel.setText("Oi "+cliente.getNome());
-
+        Pessoa pessoa = DAO.login(emailTextField.getText(), SenhaField.getText());
+        loginMessageLabel.setText("Oi "+pessoa.getNome());
+        TelaEscolhida proxy = (TelaEscolhida) telaEscolhida;
+        proxy.setPessoa(pessoa);
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("criarEvento.fxml"));
+            root = FXMLLoader.load(getClass().getResource(telaEscolhida.tela()));
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);

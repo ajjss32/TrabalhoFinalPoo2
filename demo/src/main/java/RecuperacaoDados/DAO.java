@@ -3,6 +3,7 @@ package RecuperacaoDados;
 import entity.Cliente;
 import entity.Eventos;
 import entity.Funcionario;
+import entity.Pessoa;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -104,7 +105,15 @@ public class DAO {
             entityManagerFactory.close();
         }
     }
-    public static Cliente login(String email,String senha){
+    public static Pessoa login(String email, String senha) {
+        try {
+            return loginCliente(email, senha);
+        }catch (NoResultException erro){
+            return loginFuncionario(email, senha);
+        }
+    }
+
+    private static Cliente loginCliente(String email,String senha){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
@@ -119,6 +128,23 @@ public class DAO {
             entityManagerFactory.close();
         }
     }
+
+    private static Funcionario loginFuncionario(String email,String senha){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        try {
+            TypedQuery<Funcionario> queryFuncionario = entityManager.createQuery("SELECT f FROM Funcionario f WHERE f.email= :email AND f.senha = :senha", Funcionario.class);
+            queryFuncionario.setParameter("email", email);
+            queryFuncionario.setParameter("senha", senha);
+            return queryFuncionario.getSingleResult();
+
+        } finally {
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+    }
+
     public static List<Eventos> listaEventos(){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
