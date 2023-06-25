@@ -99,7 +99,7 @@ public class Controller implements Initializable {
     public void acompanharEvento(ActionEvent event) {
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("acompanharEvento.fxml"));
+            root = FXMLLoader.load(getClass().getResource("acompanharEventoCliente.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);
