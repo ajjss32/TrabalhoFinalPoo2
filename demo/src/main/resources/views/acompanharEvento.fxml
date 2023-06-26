@@ -14,11 +14,11 @@
    <right>
       <TableView fx:id="tableView" prefHeight="744.0" prefWidth="1076.0" style="-fx-background-color: #DCDCDC;" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="idEvento" prefWidth="165.0" text="id" />
-          <TableColumn fx:id="nomeEvento" prefWidth="187.0" text="Nome" />
+          <TableColumn fx:id="idEvento" prefWidth="140.0" text="id" />
+          <TableColumn fx:id="nomeEvento" prefWidth="212.0" text="Nome" />
             <TableColumn fx:id="nomeClienteEvento" prefWidth="259.0" text="Nome do Cliente" />
-            <TableColumn fx:id="nomeResponsavelEvento" prefWidth="189.0" text="Responsavel" />
-            <TableColumn fx:id="statusEvento" prefWidth="99.0" text="Status" />
+            <TableColumn fx:id="nomeResponsavelEvento" prefWidth="262.0" text="Responsavel" />
+            <TableColumn fx:id="statusEvento" prefWidth="202.0" text="Status" />
         </columns>
       </TableView>
    </right>

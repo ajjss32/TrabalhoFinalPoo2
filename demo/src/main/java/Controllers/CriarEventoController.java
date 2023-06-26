@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -84,7 +85,12 @@ public class CriarEventoController implements Initializable {
         alert.setTitle("Evento Criado");
         alert.setHeaderText(null);
         alert.setContentText("O evento foi criado com sucesso!");
+        alert.setGraphic(new ImageView(this.getClass().getResource("/images/sucessLogo.png").toString()));
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("/styles/Alert.css").toExternalForm());
+        dialogPane.getStyleClass().add("alert-message");
         alert.showAndWait();
+
     }
 
     @FXML

@@ -10,14 +10,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="1076.0" xmlns="http://javafx.com/javafx/20.0.1" stylesheets="@/styles/TableView.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AcompanharEventoClienteController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="1076.0" stylesheets="@/styles/TableView.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AcompanharEventoClienteController">
     <right>
         <TableView fx:id="tableView" prefHeight="744.0" prefWidth="1076.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn fx:id="nomeEvento" prefWidth="120.0" text="Nome" />
+                <TableColumn fx:id="nomeEvento" prefWidth="289.0" text="Nome" />
                 <TableColumn fx:id="dataEvento" prefWidth="120.0" text="Data" />
-                <TableColumn fx:id="nomeResponsavelEvento" prefWidth="120.0" text="Responsavel" />
-                <TableColumn fx:id="statusEvento" prefWidth="120.0" text="Status" />
+                <TableColumn fx:id="nomeResponsavelEvento" prefWidth="223.0" text="Responsavel" />
+                <TableColumn fx:id="statusEvento" prefWidth="196.0" text="Status" />
             </columns>
         </TableView>
    </right>

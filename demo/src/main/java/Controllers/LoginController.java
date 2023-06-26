@@ -11,11 +11,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -85,11 +83,10 @@ public class LoginController implements Initializable {
     }
 
     public void cadastrar(){
-        try {
+       try {
             Parent root;
             FXMLLoader loader = new FXMLLoader((getClass().getResource("/views/cadastro.fxml")));
             root = loader.load();
-
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);

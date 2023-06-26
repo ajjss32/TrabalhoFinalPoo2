@@ -1,0 +1,19 @@
+.alert-message{
+    -fx-background-color: #DDFFE0;
+    -fx-font-family: "Ubuntu Light", monospace;
+    -fx-font-size: 20px;
+    -fx-min-height: 142px;
+    -fx-min-width: 499px;
+}
+.alert-message .button{
+    -fx-background-color: #06818E;
+    -fx-background-radius: 20px;
+    -fx-font-family: "Ubuntu Mono";
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+.alert-message .button:hover{
+    -fx-background-color: #036570;
+
+
+}

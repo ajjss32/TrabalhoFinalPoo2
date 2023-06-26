@@ -9,10 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -22,13 +20,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.sun.javafx.css.StyleClassSet.getStyleClass;
+
 public class CadastroController implements Initializable {
     @FXML
     private Label cadastroMessageLabel;
-    @FXML
-    private Label cpfMessageLabel;
-    @FXML
-    private Label emailMessageLabel;
+
     @FXML
     private TextField cpfTextField;
     @FXML
@@ -42,17 +39,25 @@ public class CadastroController implements Initializable {
 
     @FXML
     public void cadastrar(ActionEvent e) {
+        cpfTextField.setOnMouseClicked(event -> {
+            cpfTextField.setText("");
+            cpfTextField.setStyle("-fx-border-color: none;-fx-text-fill: black;");
+        });
         if(!verificarCpf(cpfTextField.getText())){
-            cpfMessageLabel.setText("Informe um CPF válido!");
-        } else if(DAO.verificarCpfCadastrado(cpfTextField.getText())){
-            cpfMessageLabel.setText("CPF já cadastrado!");
-        } else cpfMessageLabel.setText("");
+            exibirMensagemInvalidaCPF("Informe um CPF válido!");
+        } else if(DAO.verificarCpfCadastrado(cpfTextField.getText())) {
+            exibirMensagemInvalidaCPF("CPF já cadastrado!");
+        }
+        emailTextField.setOnMouseClicked(event -> {
+            emailTextField.setText("");
+            emailTextField.setStyle("-fx-border-color: none;-fx-text-fill: black;");
+        });
 
         if(!verificarEmail(emailTextField.getText())){
-            emailMessageLabel.setText("Informe um e-mail válido!");
-        } else if(DAO.verificarEmailCadastrado(emailTextField.getText())){
-            emailMessageLabel.setText("E-mail já cadastrado!");
-        } else emailMessageLabel.setText("");
+            exibirMensagemInvalidaEmail("Informe um e-mail válido!");
+        } else if(DAO.verificarEmailCadastrado(emailTextField.getText())) {
+            exibirMensagemInvalidaEmail("E-mail já cadastrado!");
+        }
 
         if(verificarCpf(cpfTextField.getText()) && verificarEmail(emailTextField.getText()) && !DAO.verificarCpfCadastrado(cpfTextField.getText()) && !DAO.verificarEmailCadastrado(emailTextField.getText())){
             if (!(emailTextField.getText().isBlank() && senhaPassField.getText().isBlank() && cpfTextField.getText().isBlank() && nomeTextField.getText().isBlank() && enderecoTextField.getText().isBlank())){
@@ -73,8 +78,14 @@ public class CadastroController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Cadastro Cliente");
                 alert.setHeaderText(null);
-                alert.setContentText("Cliente Cadastrado Com Sucesso!");
+                alert.setContentText(cliente.getNome()+", seu cadastro foi realizado com sucesso!");
+                alert.setGraphic(new ImageView(this.getClass().getResource("/images/sucessLogo.png").toString()));
+                DialogPane dialogPane = alert.getDialogPane();
+                dialogPane.getStylesheets().add(getClass().getResource("/styles/Alert.css").toExternalForm());
+                dialogPane.getStyleClass().add("alert-message");
                 alert.showAndWait();
+
+
 
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/criarEvento.fxml"));
@@ -118,7 +129,16 @@ public class CadastroController implements Initializable {
             return false;
         }
     }
+    public void exibirMensagemInvalidaCPF(String mensagem) {
+        cpfTextField.setText(mensagem);
+        cpfTextField.setStyle("-fx-border-color: red;-fx-text-fill: red;");
 
+    }
+    public void exibirMensagemInvalidaEmail(String mensagem) {
+            emailTextField.setText(mensagem);
+            emailTextField.setStyle("-fx-border-color: red;-fx-text-fill: red;");
+
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
