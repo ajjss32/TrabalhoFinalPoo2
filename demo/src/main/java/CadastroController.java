@@ -41,18 +41,20 @@ public class CadastroController implements Initializable {
     @FXML
     public void cadastrar(ActionEvent e) {
 
-        if(!verificarCpf(cpfTextField.toString())){
+        if(!verificarCpf(cpfTextField.getText())){
             cpfMessageLabel.setText("Informe um CPF válido!");
         } else cpfMessageLabel.setText("");
 
-        if(!verificarEmail(emailTextField.toString())){
+        if(!verificarEmail(emailTextField.getText())){
             emailMessageLabel.setText("Informe um e-mail válido!");
         } else emailMessageLabel.setText("");
 
-        if(verificarCpf(cpfTextField.toString()) && verificarEmail(emailTextField.toString())){
+        if(verificarCpf(cpfTextField.getText()) && verificarEmail(emailTextField.getText())){
             if (!(emailTextField.getText().isBlank() && senhaPassField.getText().isBlank() && cpfTextField.getText().isBlank() && nomeTextField.getText().isBlank() && enderecoTextField.getText().isBlank())){
-                Cliente cliente = new Cliente(cpfTextField.getText(),nomeTextField.getText(),enderecoTextField.getText(),emailTextField.getText(),senhaPassField.toString());
+                Cliente cliente = new Cliente(cpfTextField.getText(),nomeTextField.getText(),enderecoTextField.getText(),emailTextField.getText(),senhaPassField.getText());
                 DAO.salvarDados(cliente);
+
+                String cpfCliente = cpfTextField.getText();
 
                 emailTextField.clear();
                 senhaPassField.clear();
@@ -66,9 +68,13 @@ public class CadastroController implements Initializable {
                 alert.setContentText("Cliente Cadastrado Com Sucesso!");
                 alert.showAndWait();
 
-                Parent root;
                 try {
-                    root = FXMLLoader.load(getClass().getResource("criarEvento.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("criarEvento.fxml"));
+                    Parent root = loader.load();
+                    CriarEventoController controller = loader.getController();
+                    controller.setCpfCliente(cpfCliente);
+                    controller.mostrarCPF();
+
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
