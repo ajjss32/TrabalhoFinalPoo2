@@ -11,7 +11,8 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="1076.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<?import javafx.geometry.Insets?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CriarEventoController">
    <left>
       <AnchorPane prefHeight="744.0" prefWidth="236.0" style="-fx-background-color: #111747;" BorderPane.alignment="CENTER">
          <children>
@@ -38,7 +39,7 @@
             </Button>
             <Line endX="61.0" layoutX="153.0" layoutY="153.0" startX="-100.0" stroke="#fe5e33" />
             <Line endX="61.0" layoutX="163.0" layoutY="730.0" startX="-100.0" stroke="#fe5e33" />
-            <Button layoutX="104.0" layoutY="687.0" mnemonicParsing="false" onAction="#sair" style="-fx-background-color: #111747;" text="Sair" textFill="WHITE">
+            <Button fx:id="sair" layoutX="104.0" layoutY="687.0" mnemonicParsing="false" onAction="#sair" style="-fx-background-color: #111747;" text="Sair" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -47,7 +48,7 @@
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane prefHeight="744.0" prefWidth="840.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="744.0" prefWidth="840.0" style="-fx-background-color: FFF3F0;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="250.0" layoutY="14.0" text="Criar evento" textFill="#111747">
                <font>
@@ -59,37 +60,41 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="cpfField" layoutX="39.0" layoutY="134.0" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: #F8F8F8; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
+            <Label fx:id="cpfLabel" layoutX="39.0" layoutY="134.0" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: ffffff; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;">
+               <padding>
+                  <Insets left="5.0"/>
+               </padding>
+            </Label>
             <Label layoutX="438.0" layoutY="107.0" text="Tipo do evento" textFill="#111745c7">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="tipoField" layoutX="432.0" layoutY="134.0" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: #F8F8F8; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
+            <TextField fx:id="tipoField" layoutX="432.0" layoutY="134.0" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: ffffff; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
             <Label layoutX="45.0" layoutY="202.0" text="Data do evento" textFill="#111745c7">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="dataField" layoutX="39.0" layoutY="229.0" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: #F8F8F8; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
+            <TextField fx:id="dataField" layoutX="39.0" layoutY="229.0" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: ffffff; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
             <Label layoutX="438.0" layoutY="202.0" text="Numero de convidados" textFill="#111745c7">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="qtdPessoasField" layoutX="432.0" layoutY="229.0" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: #F8F8F8; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
+            <TextField fx:id="qtdPessoasField" layoutX="432.0" layoutY="229.0" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: ffffff; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
             <Label layoutX="45.0" layoutY="302.0" text="Local do evento" textFill="#111745c7">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="enderecoField" layoutX="39.0" layoutY="329.0" prefHeight="50.0" prefWidth="732.0" style="-fx-background-color: #F8F8F8; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
+            <TextField fx:id="enderecoField" layoutX="39.0" layoutY="329.0" prefHeight="50.0" prefWidth="732.0" style="-fx-background-color: ffffff; -fx-border-radius: 15PX; -fx-border-color: #D9D9D9;" />
             <Label layoutX="45.0" layoutY="400.0" text="Descriçao" textFill="#111745c7">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextArea fx:id="descricaoArea" layoutX="41.0" layoutY="428.0" prefHeight="117.0" prefWidth="732.0" style="-fx-background-color: #F8F8F8; -fx-border-color: #d9d9d9; -fx-border-radius: 15px;" />
+            <TextArea fx:id="descricaoArea" layoutX="41.0" layoutY="428.0" prefHeight="117.0" prefWidth="732.0" style="-fx-background-color: ffffff; -fx-border-color: #d9d9d9; -fx-border-radius: 15px;" />
             <Button fx:id="concluirButton" layoutX="243.0" layoutY="591.0" mnemonicParsing="false" onAction="#concluir" prefHeight="50.0" prefWidth="325.0" style="-fx-background-color: #06818E;" text="Concluir" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />

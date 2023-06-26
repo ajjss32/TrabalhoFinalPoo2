@@ -2,10 +2,14 @@ import ObserverPD.EventManeger;
 import entity.Eventos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,7 +30,8 @@ public class EditarEventoController implements Initializable {
     @FXML
     private Label responsavelEvent;
     @FXML
-    private TextField StatusEvent;
+    private ChoiceBox<String> StatusEvent;
+    private String[] opcoesStatus = {"Pendente","Finalizado","Em andamento"};
     @FXML
     private Button atualizarBotao;
     private Eventos eventos;
@@ -52,25 +57,40 @@ public class EditarEventoController implements Initializable {
     }
 
     public void atualizarStatus(ActionEvent e){
-        if (!StatusEvent.getText().isBlank()){
-        }
-            EventManeger eventManeger = new EventManeger();
-            eventManeger.atualizarStatusEvento(eventos.getId(),StatusEvent.getText());
-            tabelaEventos.refresh();
 
-            Stage stage = (Stage) StatusEvent.getScene().getWindow();
-            stage.close();
+        EventManeger eventManeger = new EventManeger();
+        eventManeger.atualizarStatusEvento(eventos.getId(),StatusEvent.getValue());
+        tabelaEventos.refresh();
 
-            MenuController controller = new MenuController();
-            controller.acompanharEvento(e);
+        Stage stage = (Stage) StatusEvent.getScene().getWindow();
+        stage.close();
 
-            Stage currentStage = (Stage) tabelaEventos.getScene().getWindow();
+        mostrarTabelaAtualizada();
+
+        Stage currentStage = (Stage) tabelaEventos.getScene().getWindow();
+        currentStage.close();
+    }
+
+    public void mostrarTabelaAtualizada(){
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("acompanharEvento.fxml"));
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            Stage currentStage = (Stage) tipoEvento.getScene().getWindow();
             currentStage.close();
+        } catch (IOException error) {
+            error.printStackTrace();
         }
+    }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //mostraInformacoes();
+
+        StatusEvent.getItems().addAll(opcoesStatus);
     }
 }

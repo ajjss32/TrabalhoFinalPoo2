@@ -2,15 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="786.0" style="-fx-background-color: ffffff; -fx-border-color: d9d9d9; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditarEventoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="786.0" style="-fx-background-color: FFF3F0; -fx-border-color: d9d9d9; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditarEventoController">
    <left>
-      <AnchorPane prefHeight="584.0" prefWidth="787.0" style="-fx-background-color: #ffffffff;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="584.0" prefWidth="787.0" style="-fx-background-color: FFF3F0;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="29.0" layoutY="46.0" prefHeight="26.0" prefWidth="98.0" text="Tipo Evento" textFill="#111745bf">
                <font>
@@ -95,7 +95,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <TextField fx:id="StatusEvent" layoutX="531.0" layoutY="388.0" prefHeight="50.0" prefWidth="218.0" style="-fx-background-color: F8F8F8; -fx-border-radius: 15; -fx-border-color: #06818E;" />
+            <ChoiceBox fx:id="StatusEvent" layoutX="531.0" layoutY="388.0" prefHeight="50.0" prefWidth="218.0" style="-fx-background-color: f8f8f8; -fx-border-radius: 15; -fx-border-color: #06818E;" />
          </children>
       </AnchorPane>
    </left>

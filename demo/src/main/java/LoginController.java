@@ -1,6 +1,7 @@
 import RecuperacaoDados.DAO;
 import Proxy.TelaEscolhida;
 import Proxy.TelaInicial;
+import entity.Cliente;
 import entity.Pessoa;
 import jakarta.persistence.NoResultException;
 import javafx.fxml.FXML;
@@ -57,11 +58,23 @@ public class LoginController implements Initializable {
         proxy.setPessoa(pessoa);
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource(telaEscolhida.tela()));
+            FXMLLoader loader = new FXMLLoader((getClass().getResource(telaEscolhida.tela())));
+            root = loader.load();
+
+            if(pessoa instanceof Cliente){
+                AcompanharEventoClienteController acompanharEventoController = loader.getController();
+
+                // Define o CPF do cliente no controlador
+                acompanharEventoController.setCpfCliente(pessoa.getCpf());
+                acompanharEventoController.adicionarEventoChamado();
+
+            }
+
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
             Stage currentStage = (Stage) loginMessageLabel.getScene().getWindow();
             currentStage.close();
         } catch (IOException error) {
@@ -73,6 +86,7 @@ public class LoginController implements Initializable {
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("cadastro.fxml"));
+
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);

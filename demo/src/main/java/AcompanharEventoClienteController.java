@@ -9,9 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
@@ -26,16 +24,8 @@ public class AcompanharEventoClienteController implements Initializable {
     private TableView<Eventos> tableView;
 
     @FXML
-    private TableColumn<Eventos, Integer> convidadosEvento;
-
-    @FXML
     private TableColumn<Eventos, String> dataEvento;
 
-    @FXML
-    private TableColumn<Eventos, String>descricacaoEvento;
-
-    @FXML
-    private TableColumn<Eventos, String> enderecoEvento;
 
     @FXML
     private TableColumn<Eventos, String> nomeEvento;
@@ -45,10 +35,11 @@ public class AcompanharEventoClienteController implements Initializable {
 
     @FXML
     private TableColumn<Eventos, String> statusEvento;
+    @FXML
+    private Button sair;
 
     private String cpfCliente;
 
-    //pegar lista de observer e ver se alguem tem cpf igual ao do cpf do login
     ObservableList<Eventos> eventos = FXCollections.observableArrayList();
 
     public TableView<Eventos> getTableView() {
@@ -57,7 +48,7 @@ public class AcompanharEventoClienteController implements Initializable {
 
     public void associaClientesEvento(){
         for (Eventos evento: DAO.listaEventos()){
-            if (evento.getClienteBySolicitanteFk().getCpf().equals("11122233344")){
+            if (evento.getClienteBySolicitanteFk().getCpf().equals(cpfCliente)){
                 eventos.add(evento);
             }
         }
@@ -65,9 +56,12 @@ public class AcompanharEventoClienteController implements Initializable {
 
     @FXML
     public void criarEvento(ActionEvent event) {
-        Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("criarEvento.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("criarEvento.fxml"));
+            Parent root = loader.load();
+            CriarEventoController controller = loader.getController();
+            controller.setCpfCliente(cpfCliente);
+            controller.mostrarCPF();
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -79,34 +73,20 @@ public class AcompanharEventoClienteController implements Initializable {
         }
     }
 
+
     @FXML
     public void acompanharEvento(ActionEvent event) {
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("acompanharEvento.fxml"));
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            Stage currentStage = (Stage) tableView.getScene().getWindow();
-            currentStage.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void adicionarEventoChamado() {
         associaClientesEvento();
         nomeEvento.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        descricacaoEvento.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-        convidadosEvento.setCellValueFactory(new PropertyValueFactory<>("qtdpessoas"));
         statusEvento.setCellValueFactory(new PropertyValueFactory<>("status"));
         dataEvento.setCellValueFactory(new PropertyValueFactory<>("data"));
-        enderecoEvento.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         nomeResponsavelEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFuncionarioByResponsavelFk().getNome()));
         tableView.setItems(eventos);
 
-        // Aplicar estilo somente às células preenchidas
         tableView.setRowFactory(tv -> new TableRow<Eventos>() {
             @Override
             protected void updateItem(Eventos item, boolean empty) {
@@ -123,7 +103,18 @@ public class AcompanharEventoClienteController implements Initializable {
 
     @FXML
     public void sair(ActionEvent event) {
-        System.exit(0);
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("login.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            Stage currentStage = (Stage) sair.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException error) {
+            error.printStackTrace();
+        }
     }
 
     @Override
@@ -137,7 +128,6 @@ public class AcompanharEventoClienteController implements Initializable {
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("verSolicitacao.fxml"));
                         Parent root = loader.load();
-
                         VerSolicitacaoController verSolicitacaoController = loader.getController();
                         verSolicitacaoController.setTabelaEventos(tableView);
                         verSolicitacaoController.setEventos(eventoSelecionado);
@@ -153,5 +143,33 @@ public class AcompanharEventoClienteController implements Initializable {
                 }
             }
         });
+
+        statusEvento.setCellFactory(column -> new TableCell<Eventos, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    String status = getTableView().getItems().get(getIndex()).getStatus();
+
+                    if ("Pendente".equals(status)) {
+                        setStyle("-fx-background-color: #FF967A;");
+                    } else if ("Finalizado".equals(status)) {
+                        setStyle("-fx-background-color: #C8FFCD;");
+                    } else if ("Em andamento".equals(status)) {
+                        setStyle("-fx-background-color: #FEDF97;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+    }
+
+    public void setCpfCliente(String cpf) {
+        this.cpfCliente = cpf;
     }
 }

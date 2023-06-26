@@ -16,9 +16,6 @@
             <columns>
                 <TableColumn fx:id="nomeEvento" prefWidth="120.0" text="Nome" />
                 <TableColumn fx:id="dataEvento" prefWidth="120.0" text="Data" />
-                <TableColumn fx:id="enderecoEvento" prefWidth="120.0" text="Endereço" />
-                <TableColumn fx:id="descricacaoEvento" prefWidth="120.0" text="Descriçao" />
-                <TableColumn fx:id="convidadosEvento" prefWidth="120.0" text="Convidados" />
                 <TableColumn fx:id="nomeResponsavelEvento" prefWidth="120.0" text="Responsavel" />
                 <TableColumn fx:id="statusEvento" prefWidth="120.0" text="Status" />
             </columns>
@@ -52,7 +49,7 @@
                   </Button>
                   <Line endX="61.0" layoutX="153.0" layoutY="153.0" startX="-100.0" stroke="#fe5e33" />
                   <Line endX="61.0" layoutX="163.0" layoutY="730.0" startX="-100.0" stroke="#fe5e33" />
-                  <Button layoutX="104.0" layoutY="687.0" mnemonicParsing="false" onAction="#sair" style="-fx-background-color: #111747;" text="Sair" textFill="WHITE">
+                  <Button fx:id="sair" layoutX="104.0" layoutY="687.0" mnemonicParsing="false" onAction="#sair" style="-fx-background-color: #111747;" text="Sair" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>

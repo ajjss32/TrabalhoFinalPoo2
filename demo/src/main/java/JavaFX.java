@@ -11,7 +11,6 @@ public class JavaFX extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Pane root = FXMLLoader.load(getClass().getResource("login.fxml"));
-
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
