@@ -40,18 +40,24 @@ public class CadastroController implements Initializable {
 
     @FXML
     public void cadastrar(ActionEvent e) {
-
         if(!verificarCpf(cpfTextField.getText())){
             cpfMessageLabel.setText("Informe um CPF válido!");
+        } else if(DAO.verificarCpfCadastrado(cpfTextField.getText())){
+            cpfMessageLabel.setText("CPF já cadastrado!");
         } else cpfMessageLabel.setText("");
 
         if(!verificarEmail(emailTextField.getText())){
             emailMessageLabel.setText("Informe um e-mail válido!");
+        } else if(DAO.verificarEmailCadastrado(emailTextField.getText())){
+            emailMessageLabel.setText("E-mail já cadastrado!");
         } else emailMessageLabel.setText("");
 
-        if(verificarCpf(cpfTextField.getText()) && verificarEmail(emailTextField.getText())){
+        if(verificarCpf(cpfTextField.getText()) && verificarEmail(emailTextField.getText()) && !DAO.verificarCpfCadastrado(cpfTextField.getText()) && !DAO.verificarEmailCadastrado(emailTextField.getText())){
             if (!(emailTextField.getText().isBlank() && senhaPassField.getText().isBlank() && cpfTextField.getText().isBlank() && nomeTextField.getText().isBlank() && enderecoTextField.getText().isBlank())){
-                Cliente cliente = new Cliente(cpfTextField.getText(),nomeTextField.getText(),enderecoTextField.getText(),emailTextField.getText(),senhaPassField.getText());
+                BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+                String senhaCriptografada = encoder.encode(senhaPassField.getText());
+
+                Cliente cliente = new Cliente(cpfTextField.getText(),nomeTextField.getText(),enderecoTextField.getText(),emailTextField.getText(),senhaCriptografada);
                 DAO.salvarDados(cliente);
 
                 String cpfCliente = cpfTextField.getText();
