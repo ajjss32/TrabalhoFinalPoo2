@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="786.0" style="-fx-background-color: FFF3F0; -fx-border-color: d9d9d9; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditarEventoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="786.0" style="-fx-background-color: FFF3F0; -fx-border-color: d9d9d9; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EditarEventoController">
    <left>
       <AnchorPane prefHeight="584.0" prefWidth="787.0" style="-fx-background-color: FFF3F0;" BorderPane.alignment="CENTER">
          <children>

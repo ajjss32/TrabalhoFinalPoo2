@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="786.0" style="-fx-background-color: FFF3F0; -fx-border-color: d9d9d9; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VerSolicitacaoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="786.0" style="-fx-background-color: FFF3F0; -fx-border-color: d9d9d9; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.VerSolicitacaoController">
     <top>
         <Label alignment="CENTER" text="Acompanhar Evento" textFill="#111747" BorderPane.alignment="CENTER">
             <font>
@@ -96,7 +96,7 @@
                </padding></Label>
             <ImageView fitHeight="54.0" fitWidth="786.0" layoutX="-1.0" layoutY="532.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Rangitikei%205.png" />
+                  <Image url="@/images/Rangitikei 5.png" />
                </image>
             </ImageView>
             </children>

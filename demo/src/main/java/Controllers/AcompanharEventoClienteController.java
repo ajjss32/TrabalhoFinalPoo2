@@ -1,3 +1,5 @@
+package Controllers;
+
 import RecuperacaoDados.DAO;
 import entity.Eventos;
 import javafx.beans.property.SimpleStringProperty;
@@ -57,7 +59,7 @@ public class AcompanharEventoClienteController implements Initializable {
     @FXML
     public void criarEvento(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("criarEvento.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/criarEvento.fxml"));
             Parent root = loader.load();
             CriarEventoController controller = loader.getController();
             controller.setCpfCliente(cpfCliente);
@@ -105,7 +107,7 @@ public class AcompanharEventoClienteController implements Initializable {
     public void sair(ActionEvent event) {
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("login.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -126,7 +128,7 @@ public class AcompanharEventoClienteController implements Initializable {
 
                 if (eventoSelecionado != null) {
                     try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("verSolicitacao.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/verSolicitacao.fxml"));
                         Parent root = loader.load();
                         VerSolicitacaoController verSolicitacaoController = loader.getController();
                         verSolicitacaoController.setTabelaEventos(tableView);

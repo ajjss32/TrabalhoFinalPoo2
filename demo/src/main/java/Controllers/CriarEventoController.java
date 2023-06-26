@@ -1,3 +1,4 @@
+package Controllers;
 
 import Builder.EventoBuilder;
 import RecuperacaoDados.DAO;
@@ -90,7 +91,7 @@ public class CriarEventoController implements Initializable {
     public void acompanharEvento(ActionEvent event) {
         Parent root;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("acompanharEventoCliente.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/acompanharEventoCliente.fxml"));
             root = loader.load();
             AcompanharEventoClienteController acompanharEventoController = loader.getController();
             acompanharEventoController.setCpfCliente(cpfCliente);
@@ -111,7 +112,7 @@ public class CriarEventoController implements Initializable {
     public void sair(ActionEvent event) {
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("login.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);

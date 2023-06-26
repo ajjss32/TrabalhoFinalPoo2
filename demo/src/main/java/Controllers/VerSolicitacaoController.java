@@ -1,3 +1,5 @@
+package Controllers;
+
 import entity.Eventos;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

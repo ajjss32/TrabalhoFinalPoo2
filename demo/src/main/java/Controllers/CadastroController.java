@@ -1,3 +1,5 @@
+package Controllers;
+
 import RecuperacaoDados.DAO;
 import br.com.caelum.stella.validation.CPFValidator;
 import entity.Cliente;
@@ -75,7 +77,7 @@ public class CadastroController implements Initializable {
                 alert.showAndWait();
 
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("criarEvento.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/criarEvento.fxml"));
                     Parent root = loader.load();
                     CriarEventoController controller = loader.getController();
                     controller.setCpfCliente(cpfCliente);

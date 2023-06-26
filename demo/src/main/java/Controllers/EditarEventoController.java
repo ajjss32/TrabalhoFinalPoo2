@@ -1,3 +1,5 @@
+package Controllers;
+
 import ObserverPD.EventManeger;
 import entity.Eventos;
 import javafx.event.ActionEvent;
@@ -74,7 +76,7 @@ public class EditarEventoController implements Initializable {
     public void mostrarTabelaAtualizada(){
         try {
             Parent root;
-            root = FXMLLoader.load(getClass().getResource("acompanharEvento.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/views/acompanharEvento.fxml"));
 
             Stage stage = new Stage();
             Scene scene = new Scene(root);

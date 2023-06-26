@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CadastroController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CadastroController">
    <left>
       <AnchorPane prefHeight="500.0" prefWidth="555.0" style="-fx-background-color: #FFF3F0;" BorderPane.alignment="CENTER">
          <children>
@@ -58,7 +58,7 @@
             </Button>
             <ImageView fitHeight="35.0" fitWidth="128.0" layoutX="203.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="Group 2.png" />
+                  <Image url="@/images/Group 2.png" />
                </image>
             </ImageView>
             <Label fx:id="cadastroMessageLabel" layoutX="249.0" layoutY="100.0" textAlignment="CENTER" textFill="#fe5e33">
@@ -72,7 +72,7 @@
    <center>
       <ImageView fitHeight="746.0" fitWidth="537.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="Rangitikei 1.png" />
+            <Image url="@/images/Rangitikei 1.png" />
          </image>
       </ImageView>
    </center>

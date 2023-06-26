@@ -1,3 +1,5 @@
+package Controllers;
+
 import RecuperacaoDados.DAO;
 import entity.Eventos;
 import javafx.beans.property.SimpleStringProperty;
@@ -12,11 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -85,7 +84,7 @@ public class AcompanharEventoController implements Initializable {
                 if (eventoSelecionado != null) {
 
                         try {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("editarStatus.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/editarStatus.fxml"));
                             Parent root = loader.load();
 
                             EditarEventoController editarEventoController = loader.getController();
@@ -135,7 +134,7 @@ public class AcompanharEventoController implements Initializable {
     public void sair(ActionEvent event) {
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("login.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);

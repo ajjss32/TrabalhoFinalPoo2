@@ -1,3 +1,5 @@
+package Controllers;
+
 import RecuperacaoDados.DAO;
 import Proxy.TelaEscolhida;
 import Proxy.TelaInicial;
@@ -85,7 +87,8 @@ public class LoginController implements Initializable {
     public void cadastrar(){
         try {
             Parent root;
-            root = FXMLLoader.load(getClass().getResource("cadastro.fxml"));
+            FXMLLoader loader = new FXMLLoader((getClass().getResource("/views/cadastro.fxml")));
+            root = loader.load();
 
             Stage stage = new Stage();
             Scene scene = new Scene(root);

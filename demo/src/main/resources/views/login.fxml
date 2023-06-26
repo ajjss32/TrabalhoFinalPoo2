@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="1076.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="1076.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFF3F0;" BorderPane.alignment="CENTER">
          <children>
@@ -39,7 +39,7 @@
             <Button fx:id="CadastroButton" layoutX="117.0" layoutY="510.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="50.0" prefWidth="325.0" style="-fx-border-color: #FE5E33; -fx-background-color: #FFF3F0;" text="Criar conta" textFill="#000000e7" />
             <ImageView fitHeight="45.0" fitWidth="161.0" layoutX="188.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Group%202.png" />
+                  <Image url="@/images/Group 2.png" />
                </image>
             </ImageView>
             <Label layoutX="141.0" layoutY="147.0" text="Faça login e acompanhe seus eventos!" textFill="#11174580" />
@@ -54,7 +54,7 @@
    <left>
       <ImageView fitHeight="744.0" fitWidth="522.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@Rangitikei%201.png" />
+            <Image url="@/images/Rangitikei 1.png" />
          </image>
       </ImageView>
    </left>
