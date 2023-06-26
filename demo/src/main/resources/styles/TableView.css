@@ -1,0 +1,44 @@
+.table-view{
+    -fx-background-color: white;
+}
+
+.table-view .column-header, .table-view .filler{
+    -fx-size:50px;
+    -fx-border-width: 0 0 10 0;
+    -fx-background-color:#FFF3F0;
+    -fx-alignment: left;
+
+}
+.table-view .column-header .label {
+    -fx-text-fill: grey;
+    -fx-font-family: "Ubuntu Light";
+    -fx-font-size: 16 px;
+    -fx-alignment: baseline-left;
+}
+
+.table-cell {
+    -fx-border-width: 0 0 0 0;
+    -fx-alignment: center-left;
+
+}
+.table-view .cellDefault {
+    -fx-background-color: grey;
+    -fx-border-width: 0px;
+}
+
+.table-view .table-cell-filled {
+    -fx-text-fill: black;
+    -fx-font-family: "Ubuntu Light";
+    -fx-background-color:white;
+    -fx-font-size: 16px;
+    -fx-border-color: black;
+    -fx-border-width: 0.1px;
+    -fx-border-style: solid;
+    -fx-cell-size: 70px;
+}
+.table-view .table-cell-filled:hover {
+    -fx-cursor:hand ;
+    -fx-background-color: #FFE4DD;
+}
+
+

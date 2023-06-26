@@ -21,6 +21,10 @@ public class EventManeger implements Observable{
         observers.addAll(DAO.listaClientes());
     }
 
+    public List<Observer> getObservers() {
+        return observers;
+    }
+
     @Override
     public void removerObserver(Observer observer) {
         //QUANDO MEU STATUS DO EVENTO FOR "FINALIZADO"
@@ -47,6 +51,8 @@ public class EventManeger implements Observable{
             Eventos evento =entityManager.find(Eventos.class,id);
             evento.setStatus(status);
             Eventos eventoAtualizado = entityManager.merge(evento);
+            entityManager.flush();
+            entityManager.refresh(evento);
             transaction.commit();
             notifyObservers(evento);
 

@@ -1,3 +1,4 @@
+package Controllers;
 
 import Builder.EventoBuilder;
 import RecuperacaoDados.DAO;
@@ -8,20 +9,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class CriarEventoController implements Initializable {
 
     @FXML
-    private TextField cpfField;
+    private Label cpfLabel;
 
     @FXML
     private TextField tipoField;
@@ -40,6 +38,9 @@ public class Controller implements Initializable {
 
     @FXML
     private Button concluirButton;
+    @FXML
+    private Button sair;
+    private String cpfCliente;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,21 +49,14 @@ public class Controller implements Initializable {
 
     @FXML
     public void criarEvento(ActionEvent event) {
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("criarEvento.fxml"));
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
+    }
+    public void mostrarCPF(){
+        cpfLabel.setText(cpfCliente);
+    }
     @FXML
     public void concluir(ActionEvent event){
-        String cpf = cpfField.getText();
+        String cpf = cpfCliente;
         String tipo = tipoField.getText();
         String data = dataField.getText();
         String endereco = enderecoField.getText();
@@ -80,7 +74,6 @@ public class Controller implements Initializable {
 
         DAO.salvarDados(evento);
 
-        cpfField.clear();
         tipoField.clear();
         dataField.clear();
         enderecoField.clear();
@@ -98,11 +91,18 @@ public class Controller implements Initializable {
     public void acompanharEvento(ActionEvent event) {
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("acompanharEvento.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/acompanharEventoCliente.fxml"));
+            root = loader.load();
+            AcompanharEventoClienteController acompanharEventoController = loader.getController();
+            acompanharEventoController.setCpfCliente(cpfCliente);
+            acompanharEventoController.adicionarEventoChamado();
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
+            Stage currentStage = (Stage) cpfLabel.getScene().getWindow();
+            currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -110,6 +110,21 @@ public class Controller implements Initializable {
 
     @FXML
     public void sair(ActionEvent event) {
-        System.exit(0);
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            Stage currentStage = (Stage) sair.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException error) {
+            error.printStackTrace();
+        }
+    }
+
+    public void setCpfCliente(String cpf) {
+        this.cpfCliente = cpf;
     }
 }

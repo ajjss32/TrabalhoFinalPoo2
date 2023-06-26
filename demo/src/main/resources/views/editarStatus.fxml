@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="786.0" style="-fx-background-color: FFF3F0; -fx-border-color: d9d9d9; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EditarEventoController">
+   <left>
+      <AnchorPane prefHeight="584.0" prefWidth="787.0" style="-fx-background-color: FFF3F0;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="29.0" layoutY="46.0" prefHeight="26.0" prefWidth="98.0" text="Tipo Evento" textFill="#111745bf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="tipoEvento" layoutX="31.0" layoutY="82.0" prefHeight="50.0" prefWidth="320.0" style="-fx-border-color: #06818E; -fx-background-color: f8f8f8; -fx-border-radius: 15;">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label layoutX="369.0" layoutY="49.0" prefHeight="16.0" prefWidth="96.0" text="Data" textFill="#111745bf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="dataEvent" layoutX="372.0" layoutY="82.0" prefHeight="50.0" prefWidth="170.0" style="-fx-border-color: #06818E; -fx-background-color: f8f8f8; -fx-border-radius: 15;" textFill="#111747">
+               <font>
+                  <Font name="Ubuntu Mono" size="16.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label layoutX="29.0" layoutY="134.0" prefHeight="26.0" prefWidth="98.0" text="Endereço" textFill="#111745bf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="endEvent" layoutX="28.0" layoutY="171.0" prefHeight="50.0" prefWidth="730.0" style="-fx-border-color: #06818E; -fx-background-color: f8f8f8; -fx-border-radius: 15;">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label layoutX="599.0" layoutY="49.0" prefHeight="16.0" prefWidth="96.0" text="Convidados" textFill="#111745bf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="Nconvidado" layoutX="599.0" layoutY="82.0" prefHeight="50.0" prefWidth="123.0" style="-fx-border-color: #06818E; -fx-background-color: f8f8f8; -fx-border-radius: 15;">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label layoutX="32.0" layoutY="228.0" prefHeight="26.0" prefWidth="98.0" text="Descriçao" textFill="#111745bf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="DescEvent" layoutX="27.0" layoutY="262.0" prefHeight="80.0" prefWidth="728.0" style="-fx-border-color: #06818E; -fx-background-color: f8f8f8; -fx-border-radius: 15;">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label layoutX="32.0" layoutY="359.0" prefHeight="26.0" prefWidth="98.0" text="Solicitante" textFill="#111745bf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="solicitanteEvent" layoutX="29.0" layoutY="388.0" prefHeight="50.0" prefWidth="222.0" style="-fx-border-color: #06818E; -fx-background-color: f8f8f8; -fx-border-radius: 15;">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label layoutX="288.0" layoutY="359.0" prefHeight="26.0" prefWidth="129.0" text="Responsavel" textFill="#111745bf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="responsavelEvent" layoutX="285.0" layoutY="388.0" prefHeight="50.0" prefWidth="219.0" style="-fx-border-color: #06818E; -fx-background-color: f8f8f8; -fx-border-radius: 15;">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label layoutX="542.0" layoutY="359.0" prefHeight="26.0" prefWidth="98.0" text="Status" textFill="#111745bf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="atualizarBotao" layoutX="229.0" layoutY="488.0" mnemonicParsing="false" onAction="#atualizarStatus" prefHeight="50.0" prefWidth="325.0" style="-fx-background-color: #06818E;" text="Atualizar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <ChoiceBox fx:id="StatusEvent" layoutX="531.0" layoutY="388.0" prefHeight="50.0" prefWidth="218.0" style="-fx-background-color: f8f8f8; -fx-border-radius: 15; -fx-border-color: #06818E;" />
+         </children>
+      </AnchorPane>
+   </left>
+   <top>
+      <Label alignment="CENTER" text="Atualizar Status" textFill="#111747" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Ubuntu Light" size="50.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>

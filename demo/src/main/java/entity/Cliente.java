@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class Cliente implements Observer {
+public class Cliente extends Pessoa implements Observer {
     @Id
     @Column(name = "cpf")
     private String cpf;
@@ -23,6 +23,16 @@ public class Cliente implements Observer {
     @Column(name = "senha")
     private String senha;
 
+    public Cliente(String cpf, String nome, String endereco, String email, String senha) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Cliente() {
+    }
 
     public String getNome() {
         return nome;
