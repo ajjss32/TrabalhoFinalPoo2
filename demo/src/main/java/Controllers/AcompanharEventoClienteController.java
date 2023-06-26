@@ -88,7 +88,6 @@ public class AcompanharEventoClienteController implements Initializable {
         dataEvento.setCellValueFactory(new PropertyValueFactory<>("data"));
         nomeResponsavelEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFuncionarioByResponsavelFk().getNome()));
         tableView.setItems(eventos);
-
         tableView.setRowFactory(tv -> new TableRow<Eventos>() {
             @Override
             protected void updateItem(Eventos item, boolean empty) {

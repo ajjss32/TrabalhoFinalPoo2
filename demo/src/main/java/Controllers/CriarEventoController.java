@@ -15,18 +15,19 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class CriarEventoController implements Initializable {
 
     @FXML
     private Label cpfLabel;
+    @FXML
+    private DatePicker dataField;
 
     @FXML
     private TextField tipoField;
 
-    @FXML
-    private TextField dataField;
 
     @FXML
     private TextField enderecoField;
@@ -59,7 +60,7 @@ public class CriarEventoController implements Initializable {
     public void concluir(ActionEvent event){
         String cpf = cpfCliente;
         String tipo = tipoField.getText();
-        String data = dataField.getText();
+        String data = dataField.getValue().toString();
         String endereco = enderecoField.getText();
         String descricao = descricaoArea.getText();
         int quantidadePessoas = Integer.parseInt(qtdPessoasField.getText());
@@ -76,10 +77,10 @@ public class CriarEventoController implements Initializable {
         DAO.salvarDados(evento);
 
         tipoField.clear();
-        dataField.clear();
         enderecoField.clear();
         descricaoArea.clear();
         qtdPessoasField.clear();
+        dataField.setValue(null);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Evento Criado");
